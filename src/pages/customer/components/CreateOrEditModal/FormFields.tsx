@@ -95,6 +95,8 @@ const FormFields = ({ customerState, customerDispatch, handleCep }: Props) => {
           title="Cidade:"
           $w="100%"
         />
+      </div>
+      <div className="row">
         <TextField
           value={customerState.state}
           onChange={(e) =>
@@ -108,8 +110,6 @@ const FormFields = ({ customerState, customerDispatch, handleCep }: Props) => {
           title="Estado:"
           $w="100%"
         />
-      </div>
-      <div className="row">
         <TextField
           value={customerState.province}
           onChange={(e) =>
@@ -123,6 +123,8 @@ const FormFields = ({ customerState, customerDispatch, handleCep }: Props) => {
           title="Bairro:"
           $w="100%"
         />
+      </div>
+      <div className="row">
         <TextField
           value={customerState.street}
           onChange={(e) =>

@@ -7,6 +7,8 @@ import { Title } from "../../../../shared/styles/title";
 import FormFields from "./FormFields";
 import { FormContainer } from "./style";
 import { IAction, ICustomerReducer, IState } from "./types";
+import { isSchemaValid } from "../../../../shared/validation";
+import { customerSchema } from "../../../../shared/validation/customer.validation";
 
 const initialState: IState = {
   name: "",
@@ -51,8 +53,13 @@ const CreateOrEditModal = ({
 
   async function handleAction(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setLoading(() => true);
     if (error) setError(() => null);
+    const maybeError = isSchemaValid(customerState, customerSchema);
+    if (maybeError) {
+      setError(maybeError);
+      return;
+    }
+    setLoading(() => true);
     try {
       await action(customerState);
     } catch (err) {

@@ -8,9 +8,11 @@ import { Button } from "../../../../shared/styles/button";
 import { Brand, IRouter } from "../../../../@types/router";
 import TextField from "../../../../shared/components/textField";
 import Select from "../../../../shared/components/select";
-import { MultSelect } from "../../../../shared/components/select/multSelect";
 import { usePagination } from "../../../../shared/hooks/usePagination";
 import { loadCustomersWithPagination } from "../../../../services/customer";
+import { MultSelect } from "../../../../shared/components/select/MultSelect";
+import { isSchemaValid } from "../../../../shared/validation";
+import { routerSchema } from "../../../../shared/validation/router.validation";
 
 const initialState: IRouter = {
   customers: [],
@@ -72,8 +74,13 @@ const CreateOrEditRouterModal = ({
 
   async function handleAction(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setLoading(() => true);
     if (error) setError(() => null);
+    const maybeError = isSchemaValid(routerState, routerSchema);
+    if (maybeError) {
+      setError(maybeError);
+      return;
+    }
+    setLoading(() => true);
     try {
       await action(routerState);
     } catch (err) {
