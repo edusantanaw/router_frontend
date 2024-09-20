@@ -1,25 +1,16 @@
 import { useEffect, useState } from "react";
-
-interface IPaginationResponse<T> {
-  data: T[];
-  total: number;
-}
-
-interface IPagination {
-  take: number;
-  skip: number;
-}
+import { IPagination, IPaginationResponse } from "../../@types/pagination";
 
 interface Props<T> {
   fetcher: (data: IPagination) => Promise<IPaginationResponse<T>>;
   limit?: number;
-  dependeces: [];
+  dependeces?: [];
 }
 
 export function usePagination<T>({
   fetcher,
   limit = 100,
-  dependeces,
+  dependeces = [],
 }: Props<T>) {
   const [data, setData] = useState<T[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
