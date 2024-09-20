@@ -14,21 +14,13 @@ export const CustomerGridComponent = ({
   data: ICustomer;
   fields: IGridListField[];
 }) => {
-  function formatDate(date: string | Date) {
-    const current = new Date(date);
-    const day = current.getDate();
-    const month = current.getMonth();
-    const year = current.getFullYear();
-    return `${day}/${month}/${year}`;
-  }
-
   return (
     <>
       <GridItemList $w={fields[0].width}>{data.id}</GridItemList>
       <GridItemList $w={fields[1].width}>{data.name}</GridItemList>
       <GridItemList $w={fields[2].width}>{data.cpfCnpj}</GridItemList>
       <GridItemList $w={fields[3].width}>
-        {formatDate(data.dateOfBirth)}
+        {data?.dateOfBirth ?? ""}
       </GridItemList>
       <GridItemList $w={fields[4].width}>
         {PersonOptions[data.personType]}

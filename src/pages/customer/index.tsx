@@ -5,6 +5,7 @@ import { usePagination } from "../../shared/hooks/usePagination";
 import { Button } from "../../shared/styles/button";
 import { Title } from "../../shared/styles/title";
 import CreateOrEditModal from "./components/CreateOrEditModal";
+import { IState } from "./components/CreateOrEditModal/types";
 import { CustomerGridComponent } from "./components/CustomerGridComponent";
 import { CustomerContainer } from "./styles";
 
@@ -24,6 +25,10 @@ export const CustomerPage = () => {
     limit: 100,
   });
 
+  async function handleCreateCustomer(data: IState) {
+    console.log(data);
+  }
+
   const handleCloseModal = () => setCreateClientModal(false);
 
   const handleShowModal = () => setCreateClientModal(true);
@@ -41,7 +46,10 @@ export const CustomerPage = () => {
         identifier="id"
       />
       {createClientModa && (
-        <CreateOrEditModal handleCloseModal={handleCloseModal} />
+        <CreateOrEditModal
+          action={handleCreateCustomer}
+          handleCloseModal={handleCloseModal}
+        />
       )}
     </CustomerContainer>
   );

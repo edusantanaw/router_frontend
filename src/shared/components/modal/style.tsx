@@ -14,7 +14,7 @@ export const ModalContainer = styled.div`
   .close_bg {
     position: absolute;
     z-index: -1;
-    background-color: #0000002d;
+    background-color: #00000083;
     top: 0;
     left: 0;
     height: 100vh;

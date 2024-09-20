@@ -12,7 +12,7 @@ export type ICustomer = {
   name: string;
   personType: number;
   cpfCnpj: string;
-  dateOfBirth: Date;
+  dateOfBirth?: string;
   address: IAddress;
   createdAt?: Date;
   active: boolean;
