@@ -48,3 +48,17 @@ export async function disableCustomerService(id: string) {
     throw new Error("Erro desconhecido!");
   }
 }
+
+
+export async function loadCustomersByRouterService(ip: string) {
+  try {
+    const response = await api.get<ICustomer[]>(
+      `/api/router/${ip}/customers`
+    );
+    return response.data;
+  } catch (error) {
+    const { response } = error as AxiosError<string>;
+    if (response?.data) throw new Error(response.data);
+    throw new Error("Erro desconhecido!");
+  }
+}

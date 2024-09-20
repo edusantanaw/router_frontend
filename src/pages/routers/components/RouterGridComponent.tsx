@@ -1,47 +1,45 @@
-import { ICustomer } from "../../../@types/customer";
+import { useState } from "react";
+import { FaTrash } from "react-icons/fa";
+import { MdEditSquare } from "react-icons/md";
+import { Brand, IRouter } from "../../../@types/router";
+import ConfirmModal from "../../../shared/components/confirmModal";
 import { IGridListField } from "../../../shared/components/gridList";
 import { GridItemList } from "../../../shared/components/gridList/style";
-import cpfCnpjMask from "../utils/cpfCnpjMask";
-import { MdEditSquare } from "react-icons/md";
-import { FaTrash } from "react-icons/fa";
-import { useState } from "react";
-import CreateOrEditModal from "./createOrEditModal";
-import dataToState from "../utils/dataToState";
 import {
-  disableCustomerService,
-  updateCustomerService,
-} from "../../../services/customer";
-import ConfirmModal from "../../../shared/components/confirmModal";
-import { IState } from "./createOrEditModal/types";
+  disableRouterService,
+  updateRouterService,
+} from "../../../services/routers";
+import CreateOrEditRouterModal from "./createOrEditModal";
+import { loadCustomersByRouterService } from "../../../services/customer";
+import { useFetcher } from "../../../shared/hooks/useFetcher";
 
-const PersonOptions: Record<number, string> = {
-  0: "Fisica",
-  1: "Juridica",
-};
-
-export const CustomerGridComponent = ({
+export const RouterGridComponent = ({
   data,
   fields,
 }: {
-  data: ICustomer;
+  data: IRouter;
   fields: IGridListField[];
 }) => {
-  const [currentData, setCurrentData] = useState<ICustomer>(data);
+  const [currentData, setCurrentData] = useState<IRouter>(data);
   const [showEdit, setShowEdit] = useState<boolean>(false);
   const [showDisable, setShowDisable] = useState<boolean>(false);
+
+  const loadCustomerFetcher = () => loadCustomersByRouterService(data.IP);
+
+  const { data: customers } = useFetcher({ fetcher: loadCustomerFetcher });
+  const selectedCustomers = customers.map((e) => e.id);
 
   const handleEditModal = () => setShowEdit(!showEdit);
   const handleDisableModal = () => setShowDisable(!showDisable);
 
-  async function handleUpdate(data: IState) {
-    const mappedData = { ...currentData, ...dataToState.stateToData(data) };
-    const response = await updateCustomerService(mappedData);
+  async function handleUpdate(data: IRouter) {
+    const response = await updateRouterService(data);
     setCurrentData(response);
     handleEditModal();
   }
 
   async function handleDisableCustomer() {
-    const customer = await disableCustomerService(data.id);
+    const customer = await disableRouterService(data.IP);
     handleDisableModal();
     setCurrentData(customer);
   }
@@ -50,20 +48,15 @@ export const CustomerGridComponent = ({
 
   return (
     <>
-      <GridItemList $w={fields[0].width}>{currentData.name}</GridItemList>
-      <GridItemList $w={fields[1].width}>
-        {cpfCnpjMask(currentData.cpfCnpj)}
-      </GridItemList>
+      <GridItemList $w={fields[0].width}>{currentData.IP}</GridItemList>
+      <GridItemList $w={fields[1].width}>{currentData.IPv6}</GridItemList>
       <GridItemList $w={fields[2].width}>
-        {currentData.address.city}
+        {Brand[currentData.brand]}
       </GridItemList>
       <GridItemList $w={fields[3].width}>
-        {currentData?.address.state ?? ""}
+        {currentData?.model ?? ""}
       </GridItemList>
       <GridItemList $w={fields[4].width}>
-        {PersonOptions[currentData.personType]}
-      </GridItemList>
-      <GridItemList $w={fields[5].width}>
         <ul className="icons">
           <li>
             <MdEditSquare
@@ -82,16 +75,16 @@ export const CustomerGridComponent = ({
         </ul>
       </GridItemList>
       {showEdit && (
-        <CreateOrEditModal
-          data={dataToState.dataToState(currentData)}
+        <CreateOrEditRouterModal
+          data={{ ...currentData, customers: selectedCustomers }}
+          action={handleUpdate}
           editMode={true}
           handleCloseModal={handleEditModal}
-          action={handleUpdate}
         />
       )}
       {showDisable && (
         <ConfirmModal
-          message="Deseja desabilitar este cliente?"
+          message="Deseja desabilitar este roteador?"
           action={handleDisableCustomer}
           cancelAction={handleDisableModal}
         />

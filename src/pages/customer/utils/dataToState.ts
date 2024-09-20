@@ -1,5 +1,5 @@
 import { ICustomer } from "../../../@types/customer";
-import { IState } from "../components/CreateOrEditModal/types";
+import { IState } from "../components/createOrEditModal/types";
 
 export default {
   dataToState: (data: ICustomer): IState => {

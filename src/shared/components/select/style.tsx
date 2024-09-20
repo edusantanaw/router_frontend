@@ -12,6 +12,7 @@ export const SelectContainer = styled.div<{ $w?: string }>`
     border-radius: 5px;
     border: 1px solid #c3c3c37d;
     backdrop-filter: blur(100px);
+    color: #fff;
     li {
       padding: 0.8em;
       cursor: pointer;
@@ -25,5 +26,9 @@ export const SelectContainer = styled.div<{ $w?: string }>`
       font-weight: 400;
       font-size: 0.9em;
     }
+  }
+
+  .selected {
+    background-color: #222222f0;
   }
 `;
