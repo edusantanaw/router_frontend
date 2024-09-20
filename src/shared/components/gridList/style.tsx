@@ -5,7 +5,7 @@ export const GridListContainer = styled.div`
     border-radius: 5px 5px 0px 0px;
     border: 1px solid #9c9c9c;
     display: flex;
-    background-color: #09012052;
+    background-color: #00000052;
   }
 
   .data {
@@ -29,15 +29,13 @@ export const Header = styled.li<{ $w?: string }>`
   text-align: center;
   text-transform: uppercase;
   color: #b6b6b6;
-  font-size: 0.95em;
 `;
 
 export const GridItemList = styled.div<{ $w?: string }>`
   width: ${(p) => p?.$w ?? "20%"};
   padding: 0.5em;
   color: #b6b6b6;
-  font-size: 0.95em;
   text-transform: lowercase;
   text-align: center;
-  font-size: 0.95em;
+  font-weight: 400;
 `;

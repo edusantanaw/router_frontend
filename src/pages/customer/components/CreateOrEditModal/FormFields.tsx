@@ -1,6 +1,7 @@
 import Select from "../../../../shared/components/select";
 import TextField from "../../../../shared/components/textField";
-import dateMask from "../../../../shared/utils/dateMask";
+import cpfCnpjMask from "../../utils/cpfCnpjMask";
+import dateMask from "../../utils/dateMask";
 import { IAction, IState } from "./types";
 
 const LEGAL_PERSON_TYPE = 0;
@@ -47,6 +48,13 @@ const FormFields = ({ customerState, customerDispatch, handleCep }: Props) => {
           }
           title={
             customerState.personType === LEGAL_PERSON_TYPE ? "CPF:" : "CNPJ:"
+          }
+          value={customerState.cpfCnpj}
+          onChange={(e) =>
+            customerDispatch({
+              type: "cpfCnpj",
+              value: cpfCnpjMask(e.target.value),
+            })
           }
         />
       </div>

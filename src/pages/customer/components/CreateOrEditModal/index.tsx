@@ -52,7 +52,6 @@ const CreateOrEditModal = ({
   async function handleAction(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(() => true);
-    await new Promise((resolve) => setTimeout(() => resolve(null), 1000));
     if (error) setError(() => null);
     try {
       await action(customerState);
@@ -93,6 +92,7 @@ const CreateOrEditModal = ({
           customerState={customerState}
           handleCep={handleCep}
         />
+        {error && <span className="error">{error}</span>}
         {loading ? (
           <LoadingSpinner />
         ) : (

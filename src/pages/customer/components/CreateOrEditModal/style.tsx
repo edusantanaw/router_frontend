@@ -18,4 +18,8 @@ export const FormContainer = styled(Form)`
     justify-content: space-between;
     gap: 1em;
   }
+
+  .error {
+    color: #fc0606;
+  }
 `;

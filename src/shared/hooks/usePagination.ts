@@ -46,6 +46,18 @@ export function usePagination<T>({
     setPage((c) => c - 1);
   }
 
+  function addItemToList(item: T) {
+    const clonedData = [...data];
+    if (data.length + 1 > limit) {
+      clonedData.pop();
+      clonedData.unshift(item);
+      setData(clonedData);
+      return;
+    }
+    clonedData.unshift(item);
+    setData(clonedData);
+  }
+
   return {
     data,
     loading,
@@ -53,5 +65,6 @@ export function usePagination<T>({
     handleNextPage,
     handlePreviousPage,
     total,
+    addItemToList
   };
 }

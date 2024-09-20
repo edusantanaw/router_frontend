@@ -21,4 +21,5 @@ export const Input = styled.input<{ $w?: string }>`
 export const FieldTitle = styled.label`
   font-weight: 300;
   font-size: 0.9em;
+  color: #fff;
 `;
