@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
-import { List, SiderBarContainer } from "./style";
+import { List, MenuTitle, SiderBarContainer } from "./style";
 
 export const Sidebar = () => {
   return (
     <SiderBarContainer>
+      <MenuTitle>
+        <span>Menu</span>
+      </MenuTitle>
       <List>
         <li>
           <Link to="/">

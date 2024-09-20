@@ -20,7 +20,7 @@ export function usePagination<T>({
 
   useEffect(() => {
     handleFetcher();
-  }, [...dependeces]);
+  }, dependeces);
 
   async function handleFetcher() {
     setLoading(() => true);

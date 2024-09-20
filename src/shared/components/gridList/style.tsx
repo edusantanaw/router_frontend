@@ -19,34 +19,25 @@ export const GridListContainer = styled.div`
   }
 
   .data li {
-    border-right: 1px solid #9c9c9c;
     border-bottom: 1px solid #9c9c9c;
-  }
-  .data li:last-child {
-    border-bottom: none;
-  }
-
-  .field li:last-child {
-    border: none;
-  }
-
-  .header li + li {
-    border-left: 1px solid #c3c3c3;
   }
 `;
 
 export const Header = styled.li<{ $w?: string }>`
   width: ${(p) => p?.$w ?? "20%"};
-  padding: 0.5em;
+  padding: 1em 0.5em;
   text-align: center;
   text-transform: uppercase;
   color: #b6b6b6;
+  font-size: 0.95em;
 `;
 
-export const GridItemList = styled(Header)`
+export const GridItemList = styled.div<{ $w?: string }>`
+  width: ${(p) => p?.$w ?? "20%"};
+  padding: 0.5em;
+  color: #b6b6b6;
+  font-size: 0.95em;
   text-transform: lowercase;
-  color: #cccbcb;
   text-align: center;
+  font-size: 0.95em;
 `;
-
-export const GridListField = styled.li``;
