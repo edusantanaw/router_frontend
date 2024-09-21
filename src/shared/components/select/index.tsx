@@ -28,6 +28,8 @@ const Select = ({ options, title, handleChange, $w, ...rest }: Props) => {
         $w={$w}
         onChange={() => null}
         {...rest}
+        style={{cursor: "pointer"}}
+        readOnly={true}
       />
       {showOptions && (
         <ul className="options">

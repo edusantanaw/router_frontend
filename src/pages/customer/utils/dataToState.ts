@@ -6,7 +6,7 @@ export default {
     return {
       ...data,
       ...data.address,
-      dateOfBirth: "",
+      dateOfBirth: data.dateOfBirth ?? "",
     };
   },
   stateToData: (data: IState): Omit<ICustomer, "id"> => {

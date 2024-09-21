@@ -8,4 +8,7 @@ export const customerSchema = zod.object({
   name: zod
     .string({ required_error: "O nome é obrigatorio!" })
     .min(3, { message: "O nome deve ter no minimo 3 caracteres!" }),
+  cep: zod
+    .string({ required_error: "O cep é obrigatorio!" })
+    .min(8, { message: "CEP invalido!" }),
 });

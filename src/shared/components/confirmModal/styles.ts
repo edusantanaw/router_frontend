@@ -3,13 +3,12 @@ import styled from "styled-components";
 export const ModalContent = styled.div`
   margin-inline: auto;
   align-self: center;
-  width: 25em;
   height: 13em;
   background-color: #2b2a2a;
   box-shadow: 1px 1px 5px 1px #b3afb23e;
   display: flex;
   flex-direction: column;
-  padding: 1em;
+  padding: 2em;
   align-items: center;
   justify-content: center;
   gap: 2em;

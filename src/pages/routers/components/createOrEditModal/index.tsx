@@ -24,33 +24,37 @@ const initialState: IRouter = {
 
 const BrandOptions = ["Huawei", "Cisco", "Mikrotik", "Juniper"];
 
+function routerReducer(data: IRouter, action: IAction<IRouter>) {
+  switch (action.type) {
+    case "customers": {
+      const customerAlreadySelected = data.customers.find(
+        (e) => e === action.value
+      );
+      if (customerAlreadySelected) {
+        return {
+          ...data,
+          customers: data.customers.filter((e) => e != action.value),
+        };
+      }
+      return {
+        ...data,
+        customers: [...data.customers, action.value] as string[],
+      };
+    }
+    default: {
+      return {
+        ...data,
+        [action.type]: action.value,
+      };
+    }
+  }
+}
+
 interface Props {
   editMode?: boolean;
   data?: IRouter;
   action: (data: IRouter) => Promise<void>;
   handleCloseModal: () => void;
-}
-
-function routerReducer(data: IRouter, action: IAction<IRouter>) {
-  if (action.type === "customers") {
-    const customerAlreadySelected = data.customers.find(
-      (e) => e === action.value
-    );
-    if (customerAlreadySelected) {
-      return {
-        ...data,
-        customers: data.customers.filter((e) => e != action.value),
-      };
-    }
-    return {
-      ...data,
-      customers: [...data.customers, action.value] as string[],
-    };
-  }
-  return {
-    ...data,
-    [action.type]: action.value,
-  };
 }
 
 const CreateOrEditRouterModal = ({
@@ -67,9 +71,10 @@ const CreateOrEditRouterModal = ({
     data ?? initialState
   );
 
+  // não é o ideal, mas por não ter um filtro de busca, vai servir para limitar a quantidade de itens renderizados
   const { data: customers } = usePagination({
     fetcher: loadCustomersWithPagination,
-    limit: 100,
+    limit: 20,
   });
 
   async function handleAction(e: React.FormEvent<HTMLFormElement>) {
@@ -109,6 +114,7 @@ const CreateOrEditRouterModal = ({
             onChange={(e) =>
               customerDispatch({ type: "IP", value: e.target.value })
             }
+            readOnly={editMode}
             name="ip"
             placeholder="192.168.0.1"
             title="IP:"

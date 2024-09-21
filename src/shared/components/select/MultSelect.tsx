@@ -38,6 +38,8 @@ export function MultSelect({
         $w={$w}
         onChange={() => null}
         {...rest}
+        style={{cursor: "pointer"}}
+        readOnly={true}
       />
       {showOptions && (
         <ul className="options">
