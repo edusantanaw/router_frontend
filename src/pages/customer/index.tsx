@@ -13,7 +13,6 @@ import { CustomerContainer } from "./styles";
 import dataToState from "./utils/dataToState";
 import { IState } from "./components/createOrEditModal/types";
 
-
 const fields: IGridListField[] = [
   { name: "Nome", width: "20%" },
   { name: "Cpf / CNPJ", width: "20%" },

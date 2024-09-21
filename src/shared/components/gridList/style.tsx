@@ -1,25 +1,31 @@
 import styled from "styled-components";
 
 export const GridListContainer = styled.div`
-  .header {
-    border-radius: 5px 5px 0px 0px;
-    border: 1px solid #9c9c9c;
-    display: flex;
-    background-color: #00000052;
-  }
+  overflow: auto;
+  .grid_content {
+    .header {
+      border-radius: 5px 5px 0px 0px;
+      border: 1px solid #9c9c9c;
+      display: flex;
+      background-color: #00000052;
+    }
 
-  .data {
-    border: 1px solid #c3c3c3;
-    display: flex;
-    flex-direction: column;
-  }
+    .data {
+      border: 1px solid #c3c3c3;
+      display: flex;
+      flex-direction: column;
+    }
 
-  .field {
-    display: flex;
-  }
+    .field {
+      display: flex;
+      border-bottom: 1px solid #9c9c9c;
+    }
 
-  .data li {
-    border-bottom: 1px solid #9c9c9c;
+    @media (max-width: 900px) {
+      width: 70em;
+      max-height: 100%;
+      overflow: auto;
+    }
   }
 `;
 

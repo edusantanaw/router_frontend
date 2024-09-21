@@ -21,20 +21,22 @@ export function GridList<T>({
   if (data.length === 0) return <></>;
   return (
     <GridListContainer>
-      <ul className="header">
-        {fields.map((e) => (
-          <Header key={e.name} $w={e.width}>
-            {e.name}
-          </Header>
-        ))}
-      </ul>
-      <ul className="data">
-        {data.map((e) => (
-          <li className="field" key={String(e[identifier])}>
-            <ItemComponent fields={fields} data={e} />
-          </li>
-        ))}
-      </ul>
+      <div className="grid_content">
+        <ul className="header">
+          {fields.map((e) => (
+            <Header key={e.name} $w={e.width}>
+              {e.name}
+            </Header>
+          ))}
+        </ul>
+        <ul className="data">
+          {data.map((e) => (
+            <li className="field" key={String(e[identifier])}>
+              <ItemComponent fields={fields} data={e} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </GridListContainer>
   );
 }

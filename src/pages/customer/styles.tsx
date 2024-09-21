@@ -5,13 +5,11 @@ export const CustomerContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   gap: 1.5em;
-
   .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
   .icons {
     align-items: center;
     gap: 1em;

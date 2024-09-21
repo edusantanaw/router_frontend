@@ -22,4 +22,10 @@ export const FormContainer = styled(Form)`
   .error {
     color: #fc0606;
   }
+
+  @media (max-width: 770px) {
+    padding: 1em;
+    width: 96%;
+    gap: 1em;
+  }
 `;

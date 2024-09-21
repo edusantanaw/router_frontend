@@ -18,6 +18,8 @@ export default createGlobalStyle`
 
     .content {
         display: flex;
+        width: 100%;
+        overflow: auto;
     }
 
     a {

@@ -19,4 +19,6 @@ export const Button = styled.button<{ $w?: string; $color?: string }>`
     transform: scale(1.01);
     opacity: 1;
   }
+
+  
 `;
