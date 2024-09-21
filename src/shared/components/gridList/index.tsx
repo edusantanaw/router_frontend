@@ -18,6 +18,7 @@ export function GridList<T>({
   ItemComponent,
   identifier,
 }: Props<T>) {
+  if (data.length === 0) return <></>;
   return (
     <GridListContainer>
       <ul className="header">

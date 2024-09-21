@@ -13,6 +13,8 @@ export const SelectContainer = styled.div<{ $w?: string }>`
     border: 1px solid #c3c3c37d;
     backdrop-filter: blur(100px);
     color: #fff;
+    max-height: 12em;
+    overflow: auto;
     li {
       padding: 0.8em;
       cursor: pointer;
