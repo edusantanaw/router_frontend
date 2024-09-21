@@ -6,17 +6,6 @@
 * services: A pasta services é onde estão localizadas as funções que acessam sistemas externos como a nossa aplicação backend.
 * shared: A pasta shared é onde estão localizados os componentes, constantes, utilitarios, estilos, e hooks que podem ser reutilizados em diversas partes da aplicação.
 
-## Telas
-![alt text](./readme/home.png)
-
-![alt text](./readme/customer.png)
-
-![alt text](./readme/routers.png)
-
-![alt text](./readme/router.png)
-
-![alt text](./readme/mobile.png)
-
 ## Como executar o projeto?
 
 Primeiramente será necessário alterar a VITE_BASE_URL que está localizada no arquivo .env.
@@ -38,3 +27,14 @@ Após isto, é só executar os seguintes comandos no terminal:
 * Axios
 * React-icons
 * Zod
+
+## Telas
+![alt text](./readme/home.png)
+
+![alt text](./readme/customer.png)
+
+![alt text](./readme/routers.png)
+
+![alt text](./readme/router.png)
+
+![alt text](./readme/mobile.png)
