@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from "react";
 import { IAction, IRouterReducer } from "./types";
 import Modal from "../../../../shared/components/modal/modal";
-import { FormContainer } from "../../../customer/components/createOrEditModal/style";
+import { FormContainer } from "../../../customer/components/CreateOrEditModal/style";
 import { Title } from "../../../../shared/styles/title";
 import { LoadingSpinner } from "../../../../shared/components/loadingSpinner";
 import { Button } from "../../../../shared/styles/button";
