@@ -7,11 +7,11 @@ import { GridList, IGridListField } from "../../shared/components/gridList";
 import { usePagination } from "../../shared/hooks/usePagination";
 import { Button } from "../../shared/styles/button";
 import { Title } from "../../shared/styles/title";
-import CreateOrEditModal from "./components/createOrEditModal";
+import CreateOrEditModal from "./components/CreateOrEditModal";
 import { CustomerGridComponent } from "./components/CustomerGridComponent";
 import { CustomerContainer } from "./styles";
 import dataToState from "./utils/dataToState";
-import { IState } from "./components/createOrEditModal/types";
+import { IState } from "./components/CreateOrEditModal/types";
 
 const fields: IGridListField[] = [
   { name: "Nome", width: "20%" },

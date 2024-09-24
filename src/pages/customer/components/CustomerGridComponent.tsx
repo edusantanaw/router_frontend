@@ -5,14 +5,14 @@ import cpfCnpjMask from "../utils/cpfCnpjMask";
 import { MdEditSquare } from "react-icons/md";
 import { FaTrash } from "react-icons/fa";
 import { useState } from "react";
-import CreateOrEditModal from "./createOrEditModal";
+import CreateOrEditModal from "./CreateOrEditModal";
 import dataToState from "../utils/dataToState";
 import {
   disableCustomerService,
   updateCustomerService,
 } from "../../../services/customer";
 import ConfirmModal from "../../../shared/components/confirmModal";
-import { IState } from "./createOrEditModal/types";
+import { IState } from "./CreateOrEditModal/types";
 
 const PersonOptions: Record<number, string> = {
   0: "Fisica",
